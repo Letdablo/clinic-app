@@ -1,0 +1,191 @@
+$wires_color: #ccc;
+$human_color: #666;
+$blood_color: #b51e23;
+$transition_time: 1s;
+$global_background: #f7f7f7;
+
+#about {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  a {
+    display: inline-block;
+    height: 2.5em;
+    margin: 0 5px;
+  }
+  a i {
+    font-size: 1.5em;
+    &.fa-linkedin {
+      color: #0073b0;
+    }
+    &.fa-github,
+    &.fa-globe {
+      color: #24292e;
+    }
+    &.fa-twitter {
+      color: #1da1f2;
+    }
+  }
+}
+
+#blood_content {
+  position: absolute;
+  top: 50px;
+
+  height: 100%;
+}
+
+.main_bag {
+  position: absolute;
+  width: 100px;
+  height: 140px;
+  top: 70px;
+  left: 230px;
+  border-radius: 35px;
+  opacity: 0.8;
+  background-color: rgba(222, 235, 242, 0.9);
+  border: 4px solid rgba(154, 207, 234, 0.9);
+
+  .blood {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: $blood_color;
+    border-radius: 0 0 35px 35px;
+    transition: height $transition_time;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-color: #92191b;
+      border-radius: 100%;
+    }
+  }
+}
+.title {
+  color: white;
+  margin-bottom: 25px;
+}
+#center_via_c {
+  z-index: 1;
+  width: 100%;
+  height: 600px;
+
+  .center_via {
+    width: 8px;
+
+    height: 200px;
+    position: absolute;
+    left: 304px;
+    top: 276px;
+  }
+
+  .blood_via {
+    height: 0;
+    background-color: $blood_color;
+    right: 50%;
+    width: 8px;
+    transition: height $transition_time/4;
+  }
+}
+#humans {
+  position: absolute;
+  top: 276px;
+  width: 400px;
+  height: 200px;
+  left: 108px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+
+  .human {
+    position: relative;
+
+    .via {
+      position: absolute;
+      text-align: right;
+      width: 100%;
+      height: 8px;
+
+      bottom: 0;
+    }
+    .blood_via {
+      position: absolute;
+      height: 8px;
+      background-color: $blood_color;
+      width: 0;
+      bottom: 0;
+      transition: width $transition_time;
+    }
+    &.left {
+      display: grid;
+      justify-content: left;
+      align-content: center;
+      .blood_via {
+        right: 0;
+      }
+      .scribble {
+        left: -30px;
+        span {
+          left: -40px;
+          text-align: right;
+        }
+      }
+    }
+    &.right {
+      display: grid;
+      justify-content: right;
+      align-content: center;
+      .scribble {
+        right: -60px;
+        span {
+          right: -10px;
+        }
+      }
+    }
+
+    .scribble {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      top: 0;
+      transition: background $transition_time;
+
+      span {
+        position: absolute;
+        display: grid;
+        align-items: end;
+        height: 100%;
+      }
+
+      .head {
+        width: 30%;
+        height: 30%;
+        background-color: $human_color;
+        border-radius: 50%;
+        margin: 2px auto;
+        transition: background $transition_time;
+        position: absolute;
+        top: 30%;
+        left: 5%;
+      }
+      .body {
+        position: absolute;
+        bottom: 0;
+        width: 40%;
+        height: 30%;
+        background-color: $human_color;
+        border-radius: 50% 50% 0 0;
+        margin: 0 auto;
+        transition: background $transition_time;
+      }
+    }
+  }
+}
